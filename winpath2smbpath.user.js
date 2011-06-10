@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           Windows Path 2 SMB Path
 // @namespace      http://abicky.site90.com/
-// @include        https://mail.google.com/mail/*#inbox*
+// @include        https://mail.google.com/mail/*#*
 // @description    Convert Windows path to Unix path in Gmail
 // ==/UserScript==
 
