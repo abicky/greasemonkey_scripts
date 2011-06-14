@@ -13,12 +13,13 @@ function winpath2smbpath() {
             for (var i = 0; i < mails.length; i++) {
                 var body = mails[i].getElementsByClassName('ii gt');
                 for (var j = 0; j < body.length; j++) {
-                    body[j].innerHTML = body[j].innerHTML.replace(/\\\\(?:[^\s<]|<wbr>)+/,
-                                                                  function(path) {
-                                                                      path = path.replace(/<.*?>/g, '');
-                                                                      path = 'smb:' + path.replace(/\\/g, '/');
-                                                                      return '<a href="' + path + '">' + path + '</a>';
-                                                                  });
+                    body[j].innerHTML = body[j].innerHTML
+                        .replace(/\\\\(?:[^\s<]|<wbr>|<\/?span[^>]*>)+/,
+                                 function(path) {
+                                     path = path.replace(/<.*?>/g, '');
+                                     path = 'smb:' + path.replace(/\\/g, '/');
+                                     return '<a href="' + path.substring(0, path.lastIndexOf('/')) + '">' + path + '</a>';
+                                 });
                 }
             }
         }, false);
